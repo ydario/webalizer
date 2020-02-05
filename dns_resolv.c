@@ -61,7 +61,8 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/wait.h>
-#include <db.h>                                /* DB header ****************/
+#include <db4/db.h>                                /* DB header ****************/
+#include <libcx/net.h>
 #include "webalizer.h"                         /* main header              */
 #include "lang.h"                              /* language declares        */
 #include "hashtab.h"                           /* hash table functions     */

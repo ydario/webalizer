@@ -80,6 +80,8 @@
 int bz2_rewind(void **, char *, char *);
 #endif
 
+#include <libcx/net.h>
+
 #include "webalizer.h"                         /* main header              */
 #include "output.h"
 #include "parser.h"

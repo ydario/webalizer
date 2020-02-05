@@ -16,6 +16,17 @@ typedef struct dnode *DNODEPTR;            /* DNS hash table node struct   */
 #define OBJ_HIDE 1                         /* Hidden object                */
 #define OBJ_GRP  2                         /* Grouped object               */
 
+#ifdef __OS2__
+struct sockaddr_storage
+{
+   unsigned char  sin_len;
+   unsigned char  ss_family;
+   unsigned short sin_port;
+   struct  in_addr sin_addr;
+   char    sin_zero[8];
+};
+#endif
+
 #ifdef USE_DNS
 struct dnode {  char *string;              /* DNS node hash table struct   */
               struct sockaddr_storage  addr;

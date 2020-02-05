@@ -70,7 +70,7 @@ int main()
 #include <sys/types.h>
 #endif
 
-#include <db.h>
+#include <db4/db.h>
 #include "webalizer.h"
 
 /* Stupid pre-processor tricks */

@@ -728,10 +728,12 @@ int parse_record_w3c(char *buffer)
    /* Convert GMT to localtime */
    gm_time.tm_isdst = -1;                              /* force dst check   */
    timestamp = mktime(&gm_time);                       /* get time in sec   */
+#if 0
 #ifdef HAVE_ALTZONE
    timestamp-=(gm_time.tm_isdst)?altzone:timezone;     /* solaris & friends */
 #else
    timestamp = mktime(&gm_time)+gm_time.tm_gmtoff;     /* glibc systems     */
+#endif
 #endif
    local_time = localtime(&timestamp);                 /* update tm struct  */
    strftime(log_rec.datetime, sizeof(log_rec.datetime),/* and format sting  */
