@@ -45,8 +45,8 @@ webalizer:	webalizer.o webalizer.h hashtab.o hashtab.h  \
                 output.o output.h graphs.o graphs.h lang.h   \
 		webalizer_lang.h
 	$(CC) ${LDFLAGS} -o webalizer webalizer.o hashtab.o linklist.o preserve.o parser.o output.o dns_resolv.o graphs.o ${LIBS}
-	rm -f webazolver
-	@LN_S@ webalizer webazolver
+	rm -f webazolver.exe
+	@LN_S@ webalizer.exe webazolver.exe
 
 webalizer.o:	webalizer.c webalizer.h parser.h output.h preserve.h \
 		graphs.h dns_resolv.h webalizer_lang.h
@@ -94,10 +94,10 @@ install: all
 	mkdir -p ${DESTDIR}${BINDIR}
 	mkdir -p ${DESTDIR}${MANDIR}
 	mkdir -p ${DESTDIR}${ETCDIR}
-	$(INSTALL_PROGRAM) webalizer ${DESTDIR}${BINDIR}/webalizer
-	$(INSTALL_PROGRAM) wcmgr ${DESTDIR}${BINDIR}/wcmgr
-	rm -f ${DESTDIR}${BINDIR}/webazolver
-	@LN_S@ webalizer ${DESTDIR}${BINDIR}/webazolver
+	$(INSTALL_PROGRAM) webalizer.exe ${DESTDIR}${BINDIR}/webalizer.exe
+	$(INSTALL_PROGRAM) wcmgr.exe ${DESTDIR}${BINDIR}/wcmgr.exe
+	rm -f ${DESTDIR}${BINDIR}/webazolver.exe
+	@LN_S@ webalizer.exe ${DESTDIR}${BINDIR}/webazolver.exe
 	$(INSTALL_DATA) webalizer.1 ${DESTDIR}${MANDIR}/webalizer.1
 	$(INSTALL_DATA) wcmgr.1 ${DESTDIR}${MANDIR}/wcmgr.1
 	rm -f ${DESTDIR}${MANDIR}/webazolver.1
