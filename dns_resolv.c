@@ -370,13 +370,21 @@ static void process_list(DNODEPTR l_list)
    /* fire up our child processes */
    for(i=0; i < dns_children; i++)
    {
+#ifdef __OS2__
+      if(socketpair(AF_LOCAL, SOCK_STREAM, 0, child[i].inpipe)) 
+#else
       if(pipe(child[i].inpipe))
+#endif
       {
          if (verbose) fprintf(stderr,"INPIPE creation error");
          return;   /* exit(1) */
       }
 
+#ifdef __OS2__
+      if(socketpair(AF_LOCAL, SOCK_STREAM, 0, child[i].outpipe)) 
+#else
       if(pipe(child[i].outpipe))
+#endif
       {
          if (verbose) fprintf(stderr,"OUTPIPE creation error");
          return;   /* exit(1); */
